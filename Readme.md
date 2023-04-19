@@ -1,6 +1,7 @@
-# Python
+# **Python**
 
-## Basic
+## **Basic**
+<br/>
 
 ### Operator
     3 /  2 = 1.5    // float
@@ -17,6 +18,12 @@
     a = 'a b@c'
     a.split() = ['a','b@c']     // split by ' '
     a.split('@') = ['a b','c']  // split by '@'
+---
+<br/>
+
+## **Logic Control**
+<br/>
+
 ### For loop
     words = ['a','b','c']
 
@@ -28,3 +35,25 @@
         print(a)
     for a in range(len(words)): //range
         print(words[a])
+### If Not
+
+    lst = []
+    if not lst      //check if empty
+    if not 1 in lst //check if not contain 1
+---
+<br/>
+
+## **Data Structer**
+<br/>
+
+### ListNode
+> Definition for singly-linked list
+```
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+    
+list1 = Optional[LintNode]
+```
+
