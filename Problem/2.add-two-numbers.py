@@ -15,6 +15,8 @@ class Solution:
         cur = dummy = ListNode()
         carry,sum = 0,0
         while l1 or l2:
+
+            ## listNode with different length and push Node
             sum = 0
             if l1:
                 sum += l1.val
@@ -23,8 +25,8 @@ class Solution:
                 sum += l2.val
                 l2 = l2.next
 
+            ## sum and carry
             sum += carry
-
             if sum >= 10:
                 sum = sum % 10
                 carry = 1
@@ -35,6 +37,7 @@ class Solution:
             cur.next = ListNode(sum)
             cur = cur.next
         
+        ## last Node with carry
         if carry:
             cur.next = ListNode(carry)
             
