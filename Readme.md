@@ -61,3 +61,34 @@ class ListNode:
 list1 = Optional[LintNode]
 ```
 
+### Deque
+> Definition
+```
+from collections import deque
+     
+de = deque(['a','b','c'])
+```
+> pop, append
+```
+de.pop()
+de.popleft()
+de.append()
+de.appendleft()
+```
+>Accessing Items
+```
+de.index(ele, beg, end) # return firstIndex of ${ele} searching from ${beg} to ${end}
+de.insert(i,ele)        # insert ${ele} at index ${i}
+de.count(ele)           # count the number of ${ele} in deque
+de.remove(ele)          # remove the first occurs ${ele} in deque
+de[0]                   # front element  
+de[-1]                  # back element
+```
+> Others operations
+```
+de.extend()
+de.extendleft()
+de.rotate()
+de.reverse()
+```
+
