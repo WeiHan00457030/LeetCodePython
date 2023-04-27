@@ -50,6 +50,25 @@
 ## **Data Structer**
 <br/>
 
+### Dictionary
+```
+dictionary = {"a":1,"b":2}
+dictionary["a"] -> 1
+
+"a" in dictionary -> True
+
+del dictionary["a"] -> {"b":2}
+dictionary["c"] = 3 -> {"b":2,"c",3}
+dictionary.clear()
+
+for i in dictionary:
+    print (i,dictionary[i])
+
+for k,v in dictionary.items():
+    print(k,v)
+```
+
+
 ### ListNode
 > Definition for singly-linked list
 ```
@@ -92,3 +111,7 @@ de.rotate()
 de.reverse()
 ```
 
+### Tuple - immutable
+```
+tuple = ('A',) // 1 element tuple must add ','
+```
