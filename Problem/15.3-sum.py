@@ -22,7 +22,7 @@ class Solution:
                         k -= 1
                     j += 1
                     k -= 1
-                if nums[j] + nums[k] + nums[i] > 0:
+                elif nums[j] + nums[k] + nums[i] > 0:
                     k -= 1
                 elif nums[j] + nums[k] + nums[i] < 0:
                     j += 1
