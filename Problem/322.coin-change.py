@@ -7,18 +7,28 @@
 # @lc code=start
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        max = amount + 1
-
-        dp = [max] * max
-        dp[0] = 0
-
-        for i in range(1,max):
+        
+        dpList = [None] * (amount+1)
+        dpList[0] = 0
+        coins = sorted(coins)[::-1]
+        
+        # dp from 0 to amout
+        for i in range(1,amount+1):
             for coin in coins:
-                if coin <= i:
-                    dp[i] = min(dp[i],dp[i-coin]+1)
+                # if i - coin has solution, [i] = [i-coin] + 1
+                if i >= coin and dpList[i-coin] != None:
+                    
+                    if dpList[i] == None:
+                        dpList[i] = dpList[i-coin]+1
+                    else:
+                        dpList[i] = min(dpList[i],dpList[i-coin] + 1)
+                    
+        
+        #print(dpList)
+        return dpList[amount] if (dpList[amount] != None) else -1
 
-        return -1 if dp[amount] > amount else dp[amount]
 
+        
 
 # @lc code=end
 
