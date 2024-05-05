@@ -7,16 +7,18 @@
 # @lc code=start
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        length=len(nums)
-        sol=[1]*length
-        pre = 1
-        post = 1
-        for i in range(length):
-            sol[i] *= pre
-            sol[length-i-1] *= post
+        
+        ans = [1] * len(nums)
+
+        pre,pos = 1,1
+        # pre = nums[0]*.....nums[i]
+        # pos = nums[-1] *.....nums[i]
+        
+        for i in range(len(nums)):
+            ans[i] *= pre
+            ans[len(nums) -i+1] *= pos
 
             pre *= nums[i]
-            post *= nums[length-i-1]
-        return(sol)
+            pos *= nums[len(nums)-i+1]
 # @lc code=end
 

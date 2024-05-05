@@ -8,23 +8,21 @@
 class Solution:
      def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         
-        def construct(current,wordDict, dp={}):
-            if current in dp:
-                return dp[current]
+        def build_dp(cur:str, dp = {}):
+            if cur in dp:
+                return dp[cur]
             
-            if not current:
+            if not cur:
                 return True
             
             for word in wordDict:
-                if current.startswith(word):
-                    newCur = current[len(word):]
-                    
-                    if construct(newCur,wordDict,dp):
-                        dp[current] = True
+                if cur.startswith(word):
+                    newCur = cur[len(word):]
+                    if build_dp(newCur,dp):
+                        dp[cur] = True
                         return True
-            dp[current] = False
-            return False
-
-        return construct(s,wordDict)
+            dp[cur] = False
+        
+        return build_dp(s)
 # @lc code=end
 
