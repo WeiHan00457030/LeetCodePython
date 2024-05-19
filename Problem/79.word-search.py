@@ -6,37 +6,26 @@
 
 # @lc code=start
 class Solution:
-    def exist(self, board: List[List[str]], word: str) -> bool:
-        
-        directions = [[1,0],[0,1],[-1,0],[0,-1]]
-
-        def find(i,j,word_index):
+    def exist(self, board, word):
+        def backtrack(i, j, k):
+            if k == len(word):
+                return True
+            if i < 0 or i >= len(board) or j < 0 or j >= len(board[0]) or board[i][j] != word[k]:
+                return False
             
-            if word_index == 1:
-                walked = []
-
-            for direction in directions:
-
-                next_i = i + direction[0]
-                next_j = j + direction[1]
-
-                if 0 <= next_i < len(board) and 0 <= next_j < len(board[0]) and [next_i,next_j] not in walked and board[next_i][next_j] == word[word_index]:
-                    walked.append([next_i,next_j])
-                    if word_index == len(word)-1:
-                        return True
-                    
-                    return find(next_i,next_j,word_index+1)
+            temp = board[i][j]
+            board[i][j] = ''
+            
+            if backtrack(i+1, j, k+1) or backtrack(i-1, j, k+1) or backtrack(i, j+1, k+1) or backtrack(i, j-1, k+1):
+                return True
+            
+            board[i][j] = temp
+            return False
         
-        walked = []
-
         for i in range(len(board)):
             for j in range(len(board[0])):
-
-                letter = board[i][j]
-                if letter == word[0]:
-                    if find(i,j,1):
-                        return True
-
+                if backtrack(i, j, 0):
+                    return True
         return False
             
 # @lc code=end
