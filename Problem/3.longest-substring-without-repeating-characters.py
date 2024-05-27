@@ -7,30 +7,29 @@
 # @lc code=start
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        #sliding window
-        seen = {} # record last seen character
-        ans,leftIndex = 0,0;
+        
+        # last seen index
+        dict = {}
+        
+        start = 0
+        ans = 0
+        for end in range(len(s)):
 
-        for rightIndex in range(len(s)) :
-            print(rightIndex,s[i])
+            if s[end] not in dict:
+                ans = max(ans,end-start+1)
+            else:
+                ans = max(ans,end-start)
+                new_start = dict[s[end]] + 1
+                
+                # remove seen before new_start
+                for ch in s[start:new_start-1]:
+                    del dict[ch]
 
-            # never seen -> add in to dict, compare max length
-            if s[rightIndex] not in seen:
-                seen[s[rightIndex]] = rightIndex
-                ans = max(ans,rightIndex-leftIndex+1)
-                print('ans=',ans)
-            # seen before
-            else :
-                # last seen index < leftIndex -> not in the current word
-                # add in to dict, compare max length
-                if seen[s[rightIndex]] < leftIndex:
-                    ans = max(ans,rightIndex-leftIndex+1)
-                    seen[s[rightIndex]] = rightIndex
-                # last seen index > leftIndex -> character in the current word
-                # move left index to last seen index+1, update last seen index
-                else:
-                    leftIndex = seen[s[rightIndex]] +1
-                    seen[s[rightIndex]] = rightIndex
+                start = new_start
+                
+            dict[s[end]] = end    
+    
+        
         return ans
 # @lc code=end
 
